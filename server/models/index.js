@@ -4,20 +4,20 @@ module.exports = {
   messages: {
     // a function which produces all the messages
     get: function (callback) {
-      var qry = 'SELECT message FROM messages'; // do we want this to be * instead of message?
+      var qry = 'SELECT * FROM messages'; // do we want this to be * instead of message?
       db.query(qry, (err, results) => {
         if (err) {
           console.log('err from query to get messages', err);
         } else {
-          callback(results);
+          console.log('we are inside models.get aaaaaaaaaaaaaa', results);
+          callback(null, results);
         }
       });
     }, 
 
     // a function which can be used to insert a message into the database
-    post: function (inputMessage, inputUser, inputRoom) {
-      var qry = `INSERT INTO messages(message, user_id, room_id) 
-        VALUES(${inputMessage}, ${inputUser}, ${inputRoom})`;
+    post: function (input) {
+      var qry = `INSERT INTO messages(message, user_id, room_id) VALUES("${input.inputMessage}", ${input.inputUser}, ${input.inputRoom})`;
       db.query(qry, (err) => {
         if (err) {
           console.log('err from query to post message', err);

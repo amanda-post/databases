@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS users (
   name VARCHAR(20),
   PRIMARY KEY (id)
 ) ENGINE = InnoDB;
+
 -- users/friends many to many relationship
 CREATE TABLE IF NOT EXISTS friends (
   id INTEGER AUTO_INCREMENT,
@@ -30,6 +31,7 @@ CREATE TABLE IF NOT EXISTS messages (
   message VARCHAR(300),
   user_id INTEGER,
   room_id INTEGER,
+  createdAt TIMESTAMP,
   PRIMARY KEY (id),
   FOREIGN KEY(user_id) REFERENCES users(id),
   FOREIGN KEY(room_id) REFERENCES rooms(id)
