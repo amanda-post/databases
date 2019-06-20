@@ -11,7 +11,6 @@ module.exports = {
           console.log('this is a friggin ERROR', err);
         } else {
           console.log('this is data inside of controllers index', data)
-          res.writeHead(200);
           res.send(data);
         }
       })
@@ -19,19 +18,10 @@ module.exports = {
     // a function which handles posting a message to the database
     post: function (req, res) {
       console.log('Serving request type ' + req.method + ' for url ' + req.url);
-      res.writeHead(200);
-      req.body.inputMessage = 'swaq';
-      req.body.inputUser = 1;
-      req.body.inputRoom = 2;
-      console.log(req.body);
+      console.log('this is req.body', req.body);
 
       models.messages.post(req.body)
       res.end();
-      // models.messages.post(
-        
-
-      // )
-      
     } 
   },
 

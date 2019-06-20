@@ -10,13 +10,15 @@ USE chat;
 CREATE TABLE IF NOT EXISTS rooms (
   id INTEGER AUTO_INCREMENT,
   name VARCHAR(20),
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  UNIQUE KEY (name)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS users (
   id INTEGER AUTO_INCREMENT,
   name VARCHAR(20),
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  UNIQUE KEY (name)
 ) ENGINE = InnoDB;
 
 -- users/friends many to many relationship
@@ -46,5 +48,5 @@ CREATE TABLE IF NOT EXISTS messages (
 
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql
- *  to create the database and the tables.*/
+ *  to create the data base and the tables.*/
 
